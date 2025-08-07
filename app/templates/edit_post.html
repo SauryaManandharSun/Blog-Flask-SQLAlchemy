@@ -1,0 +1,53 @@
+{% extends 'base.html' %} {% block title %} {% if post %}Edit Post{% else
+%}Create Post{% endif %} {% endblock %} {% block content %}
+
+<div
+  class="container d-flex justify-content-center align-items-center py-4 px-3"
+  style="min-height: 80vh"
+>
+  <div class="card shadow p-4" style="width: 100%; max-width: 600px">
+    <form method="POST">
+      <h1>{% if post %}Edit Post{% else %}Create Post{% endif %}</h1>
+      <div data-mdb-input-init class="form-outline mb-4">
+        <label class="form-label" for="form2Example1">Name</label>
+
+        <input
+          type="text"
+          id="title"
+          class="form-control"
+          name="title"
+          value="{{ post.title if post else '' }}"
+          required
+        />
+      </div>
+      <div data-mdb-input-init class="form-outline mb-4">
+        <label class="form-label" for="form2Example1">Description</label>
+
+        <textarea
+          name="content"
+          placeholder="Content"
+          required
+          class="form-control"
+          rows="5"
+        >
+{{ post.content if post else '' }}</textarea
+        >
+      </div>
+
+      <button
+        type="submit"
+        data-mdb-button-init
+        data-mdb-ripple-init
+        class="btn btn-primary btn-block mb-4 w-100"
+      >
+        {% if post %}Update{% else %}Create{% endif %}
+      </button>
+    </form>
+    <div class="text-center">
+      <a href="{{ url_for('routes.dashboard') }}" class="btn btn-primary"
+        >Back to Dashboard</a
+      >
+    </div>
+  </div>
+</div>
+{% endblock %}
