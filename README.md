@@ -21,5 +21,5 @@ pip install flask_login
 ### ▶️ Run the Application
 
 ```bash
-python app.py
+python "app.py"
 ```
