@@ -63,7 +63,7 @@ def login():
 @login_required
 def dashboard():
     page = request.args.get('page', 1, type=int)
-    posts = BlogPost.query.paginate(page=page, per_page=5)
+    posts = BlogPost.query.order_by(BlogPost.id.desc()).paginate(page=page, per_page=5)
     return render_template('dashboard.html', posts=posts)
 
 @routes.route('/post/new', methods=['GET', 'POST'])
